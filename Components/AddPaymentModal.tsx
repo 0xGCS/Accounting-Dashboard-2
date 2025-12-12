@@ -36,13 +36,30 @@ export function AddPaymentModal({ isOpen, onClose, supplier }: AddPaymentModalPr
           <div className="p-6 space-y-6">
             <div>
               <label className="text-sm text-gray-700 mb-2 block">Supplier</label>
-              <select className="w-full px-4 py-2 border border-gray-300 rounded-lg text-sm">
-                <option>Select supplier</option>
-                {supplier && <option selected>{supplier.name}</option>}
-                <option>Superlogic</option>
-                <option>ONE Company</option>
-                <option>Marriott Hotels</option>
-                <option>GetYourGuide</option>
+              <select 
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg text-sm"
+                defaultValue={supplier?.name || ""}
+              >
+                <option value="">Select supplier</option>
+                {supplier && <option value={supplier.name}>{supplier.name}</option>}
+                <option value="Superlogic">Superlogic</option>
+                <option value="ONE Company">ONE Company</option>
+                <option value="Marriott Hotels">Marriott Hotels</option>
+                <option value="GetYourGuide">GetYourGuide</option>
+              </select>
+            </div>
+
+            <div>
+              <label className="text-sm text-gray-700 mb-2 block">Type</label>
+              <select 
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg text-sm"
+                defaultValue={supplier?.type || ""}
+              >
+                <option value="">Select vertical</option>
+                <option value="Hotels">Hotels</option>
+                <option value="Sweepstakes">Sweepstakes</option>
+                <option value="Experiences">Experiences</option>
+                <option value="Ticketing">Ticketing</option>
               </select>
             </div>
 
