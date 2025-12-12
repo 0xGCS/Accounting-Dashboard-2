@@ -17,6 +17,7 @@ interface Transaction {
   margin: number;
   superlogicFee: number;
   ccFee: number;
+  spFee: number;
   spEarned: number;
   spRedeemed: number;
   spUsdValue: number;
@@ -147,6 +148,10 @@ export function TransactionDrawer({ transaction, onClose }: TransactionDrawerPro
               <div>
                 <div className="text-sm text-gray-600">CC Processing Fee</div>
                 <div className="text-gray-900 mt-1">${transaction.ccFee.toFixed(2)}</div>
+              </div>
+              <div>
+                <div className="text-sm text-gray-600">Spree Network Fee</div>
+                <div className="text-gray-900 mt-1">${transaction.spFee.toFixed(2)}</div>
               </div>
               <div>
                 <div className="text-sm text-gray-600">Refund Status</div>
