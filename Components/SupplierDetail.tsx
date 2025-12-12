@@ -1,6 +1,8 @@
 import { ArrowLeft, Download, Plus, TrendingUp } from 'lucide-react';
 import { DateRangePicker } from './DateRangePicker';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
+import { useState } from 'react';
+import { AddPaymentModal } from './AddPaymentModal';
 
 interface Supplier {
   id: string;
@@ -55,6 +57,8 @@ const transactions = [
 ];
 
 export function SupplierDetail({ supplier, onBack }: SupplierDetailProps) {
+  const [isAddPaymentModalOpen, setIsAddPaymentModalOpen] = useState(false);
+
   return (
     <div className="space-y-6">
       <div className="flex items-center gap-4">
@@ -75,7 +79,10 @@ export function SupplierDetail({ supplier, onBack }: SupplierDetailProps) {
             <Download className="w-4 h-4" />
             Generate Payout File
           </button>
-          <button className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">
+          <button
+            className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
+            onClick={() => setIsAddPaymentModalOpen(true)}
+          >
             <Plus className="w-4 h-4" />
             Add Payment
           </button>
@@ -200,6 +207,12 @@ export function SupplierDetail({ supplier, onBack }: SupplierDetailProps) {
           </table>
         </div>
       </div>
+
+      <AddPaymentModal
+        isOpen={isAddPaymentModalOpen}
+        onClose={() => setIsAddPaymentModalOpen(false)}
+        supplier={supplier}
+      />
     </div>
   );
 }
