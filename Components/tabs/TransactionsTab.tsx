@@ -24,6 +24,7 @@ const mockTransactions = [
     margin: 245.00,
     superlogicFee: 98.00,
     ccFee: 73.50,
+    spFee: 16.5375,
     taxIncluded: true,
     spEarned: 2450,
     spRedeemed: 0,
@@ -52,6 +53,7 @@ const mockTransactions = [
     margin: 28.35,
     superlogicFee: 9.45,
     ccFee: 0,
+    spFee: 1.20,
     taxIncluded: true,
     spEarned: 378,
     spRedeemed: 100,
@@ -80,6 +82,7 @@ const mockTransactions = [
     margin: 45.00,
     superlogicFee: 18.00,
     ccFee: 13.50,
+    spFee: 3.04,
     taxIncluded: true,
     spEarned: 450,
     spRedeemed: 0,
@@ -178,9 +181,6 @@ export function TransactionsTab() {
                   Transaction ID
                 </th>
                 <th className="px-4 py-3 text-left text-xs text-gray-600 uppercase tracking-wider whitespace-nowrap">
-                  Order ID
-                </th>
-                <th className="px-4 py-3 text-left text-xs text-gray-600 uppercase tracking-wider whitespace-nowrap">
                   Tenant
                 </th>
                 <th className="px-4 py-3 text-left text-xs text-gray-600 uppercase tracking-wider whitespace-nowrap">
@@ -196,9 +196,6 @@ export function TransactionsTab() {
                   Booking Date
                 </th>
                 <th className="px-4 py-3 text-left text-xs text-gray-600 uppercase tracking-wider whitespace-nowrap">
-                  Event Date
-                </th>
-                <th className="px-4 py-3 text-left text-xs text-gray-600 uppercase tracking-wider whitespace-nowrap">
                   Payment Rail
                 </th>
                 <th className="px-4 py-3 text-right text-xs text-gray-600 uppercase tracking-wider whitespace-nowrap">
@@ -208,10 +205,16 @@ export function TransactionsTab() {
                   COGS
                 </th>
                 <th className="px-4 py-3 text-right text-xs text-gray-600 uppercase tracking-wider whitespace-nowrap">
-                  Margin
+                  Superlogic Fee
                 </th>
                 <th className="px-4 py-3 text-right text-xs text-gray-600 uppercase tracking-wider whitespace-nowrap">
-                  Points Earned
+                  CC Fee
+                </th>
+                <th className="px-4 py-3 text-right text-xs text-gray-600 uppercase tracking-wider whitespace-nowrap">
+                  SP Fee
+                </th>
+                <th className="px-4 py-3 text-right text-xs text-gray-600 uppercase tracking-wider whitespace-nowrap">
+                  SP USD Value
                 </th>
                 <th className="px-4 py-3 text-center text-xs text-gray-600 uppercase tracking-wider whitespace-nowrap">
                   Status
@@ -230,9 +233,6 @@ export function TransactionsTab() {
                 >
                   <td className="px-4 py-3 text-sm text-gray-900 whitespace-nowrap">
                     {transaction.id}
-                  </td>
-                  <td className="px-4 py-3 text-sm text-gray-900 whitespace-nowrap">
-                    {transaction.orderId}
                   </td>
                   <td className="px-4 py-3 text-sm text-gray-900 whitespace-nowrap">
                     {transaction.tenant}
@@ -259,9 +259,6 @@ export function TransactionsTab() {
                   <td className="px-4 py-3 text-sm text-gray-900 whitespace-nowrap">
                     {transaction.bookingDate}
                   </td>
-                  <td className="px-4 py-3 text-sm text-gray-900 whitespace-nowrap">
-                    {transaction.eventDate}
-                  </td>
                   <td className="px-4 py-3 text-sm whitespace-nowrap">
                     <span
                       className={`inline-flex px-2 py-1 text-xs rounded-full ${
@@ -280,10 +277,16 @@ export function TransactionsTab() {
                     ${transaction.cogs.toFixed(2)}
                   </td>
                   <td className="px-4 py-3 text-sm text-gray-900 text-right whitespace-nowrap">
-                    ${transaction.margin.toFixed(2)}
+                    ${transaction.superlogicFee.toFixed(2)}
                   </td>
                   <td className="px-4 py-3 text-sm text-gray-900 text-right whitespace-nowrap">
-                    {transaction.spEarned.toLocaleString()}
+                    ${transaction.ccFee.toFixed(2)}
+                  </td>
+                  <td className="px-4 py-3 text-sm text-gray-900 text-right whitespace-nowrap">
+                    ${transaction.spFee.toFixed(2)}
+                  </td>
+                  <td className="px-4 py-3 text-sm text-gray-900 text-right whitespace-nowrap">
+                    ${transaction.spUsdValue.toFixed(2)}
                   </td>
                   <td className="px-4 py-3 text-center whitespace-nowrap">
                     <span
