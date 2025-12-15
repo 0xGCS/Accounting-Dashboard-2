@@ -22,9 +22,9 @@ const mockTransactions = [
     grossAmount: 2450.00,
     cogs: 2205.00,
     margin: 245.00,
-    superlogicFee: 98.00,
+    superlogicFee: 0.00,
     ccFee: 73.50,
-    spFee: 16.5375,
+    spFee: 0.00,
     taxIncluded: true,
     spEarned: 2450,
     spRedeemed: 0,
@@ -80,9 +80,9 @@ const mockTransactions = [
     grossAmount: 450.00,
     cogs: 405.00,
     margin: 45.00,
-    superlogicFee: 18.00,
+    superlogicFee: 0.00,
     ccFee: 13.50,
-    spFee: 3.04,
+    spFee: 0.00,
     taxIncluded: true,
     spEarned: 450,
     spRedeemed: 0,
@@ -92,6 +92,35 @@ const mockTransactions = [
     isRefundable: false,
     status: 'REFUNDED',
   },
+  {
+    id: 'TXN-2024-113355',
+    orderId: 'ORD-874637',
+    tenant: 'Qiibee',
+    supplier: 'Superlogic',
+    category: 'Tickets',
+    clientOperator: 'Qiibee',
+    userTier: 'Silver',
+    productType: 'Concert Tickets',
+    bookingDate: '2025-04-12',
+    eventDate: '2025-06-08',
+    paymentRail: 'Crypto',
+    currency: 'USDC',
+    fxRate: 1.0,
+    grossAmount: 1550.00,
+    cogs: 405.00,
+    margin: 45.00,
+    superlogicFee: 7.75,
+    ccFee: 0.00,
+    spFee: 11.63,
+    taxIncluded: true,
+    spEarned: 542,
+    spRedeemed: 0,
+    spUsdValue: 5.42,
+    refundStatus: 'None',
+    refundedAmount: 450.00,
+    isRefundable: false,
+    status: 'COMPLETED',
+  }
 ];
 
 export function TransactionsTab() {
@@ -99,9 +128,9 @@ export function TransactionsTab() {
   const [selectedTransaction, setSelectedTransaction] = useState<typeof mockTransactions[0] | null>(null);
   const [includeTestTransactions, setIncludeTestTransactions] = useState(false);
 
-  const tenantOptions = ['Air Shop', 'Crypto.com', 'Other'];
+  const tenantOptions = ['Air Shop', 'Crypto.com', 'Qiibee', 'BookIt'];
   const supplierOptions = ['Superlogic', 'ONE Company', 'BookIt'];
-  const tierOptions = ['Basic', 'Gold', 'Premium'];
+  const tierOptions = ['Basic', 'Silver', 'Gold', 'Premium'];
   const categoryOptions = ['Hotels', 'Experiences', 'Tickets', 'Tours', 'Flights'];
   const paymentOptions = ['Card', 'Crypto'];
   const statusOptions = ['Completed', 'Refundable', 'Refunded', 'Cancelled', 'Pending'];
